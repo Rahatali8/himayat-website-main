@@ -1,6 +1,5 @@
 "use client"
-
-import { ArrowRight, Heart, CheckCircle, Lightbulb, Handshake, Newspaper } from "lucide-react"
+import { ArrowRight, Heart, CheckCircle, Lightbulb, Handshake} from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -121,43 +120,236 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen overflow-hidden">
-      {/* New Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-emerald-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center text-center">
-        <div className="container mx-auto px-4 flex flex-col items-center text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
-            {language === "ur"
-              ? "اپنے کاروبار کو نئی بلندیوں تک لے جائیں"
-              : "Take Your Business to New Heights"}
-          </h1>
-          <p className="text-xl text-slate-700 dark:text-slate-300 max-w-2xl mb-8">
-            {language === "ur"
-              ? "ہمایت کے ساتھ آسان قرض، تیز منظوری اور بہترین سپورٹ حاصل کریں"
-              : "Get easy loans, fast approval, and top support with Himayat"}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/loan-application">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
-                {language === "ur" ? "اب درخواست دیں" : "Apply Now"}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="lg" variant="outline">
-                {language === "ur" ? "مزید معلومات" : "More Information"}
-              </Button>
-            </Link>
+      {/* Hero Section - Saylani Style with Animation and Circles */}
+      <section className="relative w-full min-h-[85vh] bg-white overflow-hidden flex items-center">
+        <div className="container mx-auto px-4 h-full py-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center h-full">
+            {/* Left Content with Animation */}
+            <div className="space-y-8 animate-in fade-in slide-in-from-left-6 duration-1000 ml-10 mb-10">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray">
+                  {language === "ur"
+                    ? "پاکستان کی بہتری کے لیے ہماری خدمات"
+                    : "Empowering Lives Through Service"}
+                </h1>
+                <p className="text-xl text-gray leading-relaxed">
+                  {language === "ur"
+                    ? "غریبوں کی مدد، تعلیم، صحت اور روزگار کے شعبوں میں خدمات"
+                    : "Dedicated to providing education, healthcare, and sustainable livelihood opportunities to those in need."}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/donate">
+                    <Button size="lg" 
+                      className="bg-[#0D6DB7] text-white hover:bg-[#0D6DB7]/90 
+                        px-8 py-6 text-lg font-semibold min-w-[200px]
+                        shadow-lg hover:shadow-xl transition-all duration-300">
+                      {language === "ur" ? "عطیہ دیں" : "Donate Now"}
+                      <Heart className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link href="/apply">
+                    <Button size="lg" 
+                      className="border-2 border-[#8DC63F] text-[#8DC63F] bg-white hover:bg-[#8DC63F] hover:text-white px-8 py-6 text-lg font-semibold min-w-[200px] shadow-lg hover:shadow-xl transition-all duration-300">
+                      {language === "ur" ? "مدد حاصل کریں" : "Get Help"}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            {/* Right Side: Hero Image in Circle + Animated Circles */}
+            <div className="relative flex justify-center items-center h-full">
+              {/* Animated Background Circles - Distributed across hero section */}
+              <div className="absolute inset-0 pointer-events-none z-0">
+                {/* Top left */}
+                <span className="block rounded-full bg-[#0D6DB7]/10 w-17 h-17 animate-circle-move absolute top-2 left-0"></span>
+                {/* Top Center */}
+                <span className="block rounded-full bg-[#0D6DB7]/10 w-12 h-12 animate-circle-move2 absolute bottom-120 left-72"></span>
+                {/* Top right */}
+                <span className="block rounded-full bg-[#8DC63F]/10 w-20 h-20 animate-circle-move3 absolute top-1 right-0"></span>
+                {/* Center left */}
+                <span className="block rounded-full bg-[#0D6DB7]/20 w-16 h-16 animate-circle-move4 absolute top-1/2 left-10"></span>
+                {/* Center right */}
+                <span className="block rounded-full bg-[#8DC63F]/20 w-16 h-16 animate-circle-move5 absolute top-1/2 right-16"></span>
+                {/* Bottom left */}
+                <span className="block rounded-full bg-[#0D6DB7]/10 w-20 h-20 animate-circle-move6 absolute bottom-5 left-16"></span>
+                {/* Bottom right */}
+                <span className="block rounded-full bg-[#8DC63F]/10 w-24 h-24 animate-circle-move7 absolute bottom-2 right-2"></span>
+              </div>
+              {/* Multiple Hero Images in Circles */}
+              <div className="relative z-10 w-[400px] h-[400px] md:w-[480px] md:h-[480px]">
+                {/* Large bottom left image */}
+                <div className="hero-circle-lift group absolute left-0 bottom-15 w-72 h-72 rounded-full bg-gradient-to-br from-white via-[#eaf6fb] to-[#eafbe7] shadow-2xl border-4 border-[#0D6DB7] flex items-center justify-center animate-float" style={{marginLeft: '-32px', marginBottom: '-32px'}}>
+                  <Image
+                    src="/hero-back.png"
+                    alt="Hero Main"
+                    fill
+                    sizes="(max-width: 480px) 100vw, 220px"
+                    className="rounded-full object-cover object-center w-full h-full"
+                  />
+                </div>
+                {/* Top left image */}
+                <div className="hero-circle-lift group absolute left-[85px] top-[2px] w-36 h-36 rounded-full bg-gradient-to-br from-white via-[#eafbe7] to-[#eaf6fb] shadow-xl border-4 border-[#8DC63F] flex items-center justify-center animate-float delay-200">
+                  <Image
+                    src="/placeholder-user.jpg"
+                    alt="Hero 2"
+                    fill
+                    sizes="(max-width: 480px) 100vw, 140px"
+                    className="rounded-full object-cover object-center w-full h-full"
+                  />
+                </div>
+                {/* Top right image */}
+                <div className="hero-circle-lift group absolute right-[10px] top-[40px] w-55 h-55 rounded-full bg-gradient-to-br from-white via-[#eafbe7] to-[#eaf6fb] shadow-xl border-4 border-[#0D6DB7] flex items-center justify-center animate-float delay-400">
+                  <Image
+                    src="/placeholder-logo.png"
+                    alt="Hero 3"
+                    fill
+                    sizes="(max-width: 480px) 100vw, 160px"
+                    className="rounded-full object-cover object-center w-full h-full"
+                  />
+                </div>
+                {/* Bottom right small image */}
+                <div className="hero-circle-lift group absolute right-[60px] bottom-[50px] w-36 h-36 rounded-full bg-gradient-to-br from-white via-[#eafbe7] to-[#eaf6fb] shadow-lg border-4 border-[#8DC63F] flex items-center justify-center animate-float delay-600">
+                  <Image
+                    src="/placeholder.jpg"
+                    alt="Hero 4"
+                    fill
+                    sizes="(max-width: 480px) 100vw, 100px"
+                    className="rounded-full object-cover object-center w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
+        {/* Animated circle keyframes for hero section - moved outside image container */}
+        <style jsx>{`
+          @keyframes circleMove {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.08); }
+            100% { transform: translateY(0) scale(1); }
+          }
+          .animate-circle-move {
+            animation: circleMove 4s ease-in-out infinite;
+          }
+          @keyframes circleMove2 {
+            0% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(20px) scale(1.08); }
+            100% { transform: translateX(0) scale(1); }
+          }
+          .animate-circle-move2 {
+            animation: circleMove2 5s ease-in-out infinite;
+          }
+          @keyframes circleMove3 {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(15px) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+          }
+          .animate-circle-move3 {
+            animation: circleMove3 6s ease-in-out infinite;
+          }
+          @keyframes circleMove4 {
+            0% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(-15px) scale(1.05); }
+            100% { transform: translateX(0) scale(1); }
+          }
+          .animate-circle-move4 {
+            animation: circleMove4 7s ease-in-out infinite;
+          }
+          @keyframes circleMove5 {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.03); }
+            100% { transform: translateY(0) scale(1); }
+          }
+          .animate-circle-move5 {
+            animation: circleMove5 4.5s ease-in-out infinite;
+          }
+          @keyframes circleMove6 {
+            0% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(10px) scale(1.03); }
+            100% { transform: translateX(0) scale(1); }
+          }
+          .animate-circle-move6 {
+            animation: circleMove6 5.5s ease-in-out infinite;
+          }
+          @keyframes circleMove7 {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(10px) scale(1.03); }
+            100% { transform: translateY(0) scale(1); }
+          }
+          .animate-circle-move7 {
+            animation: circleMove7 6.5s ease-in-out infinite;
+          }
+        `}</style>
           </div>
         </div>
+      </section>
+
+      {/* News & Events / Marquee Section */}
+      <section className="py-4 bg-[#8DC63F] text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center overflow-hidden">
+            <div className="flex-shrink-0 bg-[#0D6DB7] px-6 py-4 rounded-lg shadow-lg">
+              <span className="font-bold text-lg tracking-wide">{t("latestNews")}</span>
+            </div>
+            <div className="marquee-wrapper overflow-hidden whitespace-nowrap relative flex-1 ml-4 rounded-lg shadow-lg border border-[#0D6DB7] bg-white">
+              <div className="marquee-content flex items-center h-12" style={{display: 'inline-flex'}}>
+                {latestNews.map((news, index) => (
+                  <Link
+                    key={news.id}
+                    href={news.link}
+                    className="inline-block mx-8 px-4 py-2 rounded-lg bg-[#eaf6fb] text-[#0D6DB7] font-medium hover:bg-[#0D6DB7] hover:text-white transition-colors duration-300 shadow"
+                  >
+                    <span>{news.title}</span>
+                  </Link>
+                ))}
+                {latestNews.map((news, index) => (
+                  <Link
+                    key={`dup-${news.id}`}
+                    href={news.link}
+                    className="inline-block mx-8 px-4 py-2 rounded-lg bg-[#eaf6fb] text-[#0D6DB7] font-medium hover:bg-[#0D6DB7] hover:text-white transition-colors duration-300 shadow"
+                  >
+                    <span>{news.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <style jsx>{`
+          .marquee-wrapper {
+            position: relative;
+            width: 100%;
+            height: 56px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(13,109,183,0.08);
+            border: 1px solid #0D6DB7;
+          }
+          .marquee-content {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            animation: marqueeMove 18s linear infinite;
+            will-change: transform;
+          }
+          .marquee-wrapper:hover .marquee-content {
+            animation-play-state: paused;
+          }
+          @keyframes marqueeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </section>
 
       {/* About Us / Mission Section */}
       <section className="py-16 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray">
               {t("missionTitle")}
             </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">{t("missionText")}</p>
+            <p className="text-lg text-gray leading-relaxed">{t("missionText")}</p>
           </div>
           {/* About Us Feature Cards */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -222,8 +414,8 @@ export default function HomePage() {
               <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 space-y-4 text-center">
                   <CheckCircle className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "شفافیت" : "Transparency"}</h3>
-                  <p className="text-slate-600 text-sm">
+                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "شفافیت" : "Transparency"}</h3>
+                  <p className="text-gray text-sm">
                     {language === "ur"
                       ? "ہر قدم پر مکمل شفافیت کو یقینی بنانا"
                       : "Ensuring complete transparency at every step."}
@@ -233,8 +425,8 @@ export default function HomePage() {
               <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 space-y-4 text-center">
                   <Lightbulb className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "جدت" : "Innovation"}</h3>
-                  <p className="text-slate-600 text-sm">
+                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "جدت" : "Innovation"}</h3>
+                  <p className="text-gray text-sm">
                     {language === "ur" ? "نئے اور مؤثر حل تلاش کرنا" : "Seeking new and effective solutions."}
                   </p>
                 </CardContent>
@@ -242,8 +434,8 @@ export default function HomePage() {
               <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 space-y-4 text-center">
                   <Handshake className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "تعاون" : "Collaboration"}</h3>
-                  <p className="text-slate-600 text-sm">
+                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "تعاون" : "Collaboration"}</h3>
+                  <p className="text-gray text-sm">
                     {language === "ur" ? "مضبوط شراکت داری کے ذریعے کام کرنا" : "Working through strong partnerships."}
                   </p>
                 </CardContent>
@@ -251,8 +443,8 @@ export default function HomePage() {
               <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 space-y-4 text-center">
                   <Heart className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "ہمدردی" : "Compassion"}</h3>
-                  <p className="text-slate-600 text-sm">
+                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "ہمدردی" : "Compassion"}</h3>
+                  <p className="text-gray text-sm">
                     {language === "ur" ? "ضرورت مندوں کے لیے گہری ہمدردی" : "Deep empathy for those in need."}
                   </p>
                 </CardContent>
@@ -262,136 +454,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Our Work / Programs Section (Redesigned) */}
-      <section className="py-16 bg-white relative overflow-hidden">
+      {/* What We Do Section - Saylani Style */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              {t("ourWorkTitle")}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray mb-4">
+              {language === "ur" ? "ہم کیا کرتے ہیں" : "What We Do"}
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              {language === "ur"
-                ? "ہم مختلف شعبوں میں جامع خدمات فراہم کرتے ہیں"
-                : "We provide comprehensive services across various sectors"}
-            </p>
+            <div className="w-24 h-1 bg-[#8DC63F] mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {programs.map((program, index) => (
-              <div
-                key={index}
-                className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <Link href={program.href} className="block">
-                  <div className="relative w-full h-60 overflow-hidden">
+              <Link href={program.href} key={index}>
+                <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={program.image || "/placeholder.svg"}
                       alt={program.title}
                       layout="fill"
                       objectFit="cover"
-                      className="transition-transform duration-500 group-hover:scale-110"
+                      className="transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300 flex items-end p-6">
-                      <h3 className="text-2xl font-bold text-white relative z-10">{program.title}</h3>
-                    </div>
                   </div>
-                  <div className="p-6 bg-white">
-                    <p className="text-slate-600 mb-4 line-clamp-3">{program.description}</p>
-                    <Button variant="link" className="p-0 h-auto text-[#00a3cc] hover:text-[#00a3cc]">
-                      {t("learnMore")} <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold text-[#0D6DB7] mb-2">{program.title}</h3>
+                    <p className="text-sm text-gray line-clamp-2">{program.description}</p>
                   </div>
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Impact / Statistics Section with Background Image */}
-      <section className="relative py-20 bg-white overflow-hidden">
-        <Image
-          src="/images/stats-background.png"
-          alt="Statistics Background"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-          className="absolute inset-0 z-0 opacity-10"
-        />
-        {/* Removed gradient background */}
-        <div className="container mx-auto px-4 relative z-20">
-          <div className="text-center space-y-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              {t("ourImpact")}
+      {/* Statistics Section - Saylani Style */}
+      <section className="py-16 bg-[#0D6DB7]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray mb-4">
+              {language === "ur" ? "ہماری کارکردگی" : "Our Impact"}
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              {language === "ur" ? "ہماری کوششوں کے نتائج اعداد و شمار میں" : "The results of our efforts in numbers"}
-            </p>
+            <div className="w-24 h-1 bg-[#8DC63F] mx-auto"></div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="text-center space-y-3 group animate-in fade-in slide-in-from-bottom-4 duration-1000"
-                style={{ animationDelay: `${index * 200}ms` }}
+                className="text-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
               >
-                <div className="space-y-1">
-                  <div className="text-4xl md:text-5xl font-bold text-slate-900">
-                    {stat.value}
-                  </div>
-                  <div className="text-lg text-slate-700">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  {stat.value}
                 </div>
+                <div className="text-lg text-gray">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* News & Events / Marquee Section */}
-      <section className="py-8 bg-slate-100 border-t border-b border-slate-200 relative overflow-hidden">
-        <div className="container mx-auto px-4 flex items-center justify-between">
-          <div className="flex items-center space-x-4 flex-shrink-0">
-            <Newspaper className="h-6 w-6 text-emerald-600" />
-            <span className="font-bold text-lg text-slate-800">{t("latestNews")}</span>
-          </div>
-          <div className="flex-1 min-w-0 ml-8 marquee-container">
-            <div className="marquee-content">
-              {latestNews.map((news, index) => (
-                <Link
-                  key={news.id}
-                  href={news.link}
-                  className="inline-block mx-8 text-slate-700 hover:text-emerald-600 transition-colors duration-300"
-                >
-                  <span className="font-medium">{news.title}</span> -{" "}
-                  <span className="text-sm text-slate-500">{news.date}</span>
-                </Link>
-              ))}
-              {/* Duplicate content to ensure continuous scroll */}
-              {latestNews.map((news, index) => (
-                <Link
-                  key={`dup-${news.id}`}
-                  href={news.link}
-                  className="inline-block mx-8 text-slate-700 hover:text-emerald-600 transition-colors duration-300"
-                >
-                  <span className="font-medium">{news.title}</span> -{" "}
-                  <span className="text-sm text-slate-500">{news.date}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="flex-shrink-0 ml-8">
-            <Link href="/media/news">
-              <Button
-                variant="outline"
-                className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-300 bg-transparent"
-              >
-                {t("viewAllNews")}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials Section */}
       <section className="py-16 bg-white relative overflow-hidden">
@@ -400,10 +521,10 @@ export default function HomePage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center space-y-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray">
               {t("successStories")}
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-gray">
               {language === "ur"
                 ? "ہمارے مستفید افراد کی کامیابی کی کہانیاں"
                 : "Success stories from our beneficiaries"}
@@ -432,8 +553,8 @@ export default function HomePage() {
                       />
                     </div>
                     <div>
-                      <div className="font-semibold text-slate-900">{testimonial.name}</div>
-                      <div className="text-sm text-slate-500">{testimonial.location}</div>
+                    <div className="font-semibold text-gray">{testimonial.name}</div>
+                    <div className="text-sm text-gray">{testimonial.location}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -444,38 +565,35 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#00a3cc] text-white relative overflow-hidden">
-        {/* Removed all gradient overlays and decorative elements */}
-        <div className="container mx-auto px-4 text-center space-y-8 relative z-10">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t("joinUsToday")}</h2>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
+      <section className="py-16 bg-[#0D6DB7] text-white">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray mb-6">{t("joinUsToday")}</h2>
+            <p className="text-lg text-gray mb-8">
               {language === "ur"
                 ? "ہمارے ساتھ مل کر پاکستان کو خوددار بنانے میں اپنا کردار ادا کریں"
-                : "Play your part in making Pakistan self-reliant by joining our mission"}
+                : "Join us in making Pakistan self-reliant"}
             </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-            <Link href="/apply">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-              >
-                {t("applyForHelp")}
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-            </Link>
-            <Link href="/donate">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 text-lg bg-transparent shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-              >
-                {t("donate")}
-                <Heart className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link href="/apply">
+                <Button
+                  size="lg"
+                  className="bg-[#8DC63F] hover:bg-[#7AB62F] text-white px-8 py-6 text-lg font-semibold"
+                >
+                  {t("applyForHelp")}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/donate">
+                <Button
+                  size="lg"
+                  className="bg-white text-[#0D6DB7] hover:bg-white/90 px-8 py-6 text-lg font-semibold"
+                >
+                  {t("donate")}
+                  <Heart className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
