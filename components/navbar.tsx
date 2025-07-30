@@ -15,14 +15,20 @@ import {
   Video,
   Newspaper,
   BookOpen,
+  Crown,
+  UserCheck,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/language-provider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { usePathname, useSearchParams } from "next/navigation"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const currentRole = searchParams.get("role")
 
   const navItems = [
     { href: "/", label: t("home") },
@@ -234,12 +240,35 @@ export function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="animate-in slide-in-from-top-2 duration-300">
-                <DropdownMenuItem asChild className="hover:bg-emerald-50 transition-colors">
-                  <Link href="/admin" className="flex items-center">
-                    <BarChart3 className="h-4 w-4 mr-2" />
-                    {t("adminDashboard")}
-                  </Link>
-                </DropdownMenuItem>
+                {/* Admin Submenu */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <DropdownMenuItem className="hover:bg-emerald-50 transition-colors flex items-center justify-between">
+                      <div className="flex items-center">
+                        <Crown className="h-4 w-4 mr-2" />
+                        {language === "ur" ? "منتظمین" : "Admins"}
+                      </div>
+                      <ChevronDown className="h-4 w-4" />
+                    </DropdownMenuItem>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent side="right" className="animate-in slide-in-from-left-2 duration-300">
+                    {/* Admin link: disable if currentRole is 'admin' */}
+                    <DropdownMenuItem asChild className={currentRole === "admin" ? "pointer-events-none opacity-50" : "hover:bg-emerald-50 transition-colors"}>
+                      <Link href="/vips-dashboard?role=admin" className="flex items-center">
+                        <UserCheck className="h-4 w-4 mr-2" />
+                        {language === "ur" ? "ایڈمن" : "Admin"}
+                      </Link>
+                    </DropdownMenuItem>
+                    {/* Super Admin link: disable if currentRole is 'super_admin' */}
+                    <DropdownMenuItem asChild className={currentRole === "super_admin" ? "pointer-events-none opacity-50" : "hover:bg-emerald-50 transition-colors"}>
+                      <Link href="/vips-dashboard?role=super_admin" className="flex items-center">
+                        <Crown className="h-4 w-4 mr-2" />
+                        {language === "ur" ? "سپر ایڈمن" : "Super Admin"}
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                {/* Donor Dashboard */}
                 <DropdownMenuItem asChild className="hover:bg-emerald-50 transition-colors">
                   <Link href="/donors-dashboard" className="flex items-center">
                     <Heart className="h-4 w-4 mr-2" />
@@ -276,6 +305,37 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              {/* VIPs Section in Mobile Menu */}
+              <div className="border-t pt-3">
+                <div className="text-xs font-semibold text-slate-500 mb-2 px-3">
+                  {t("vips")}
+                </div>
+                <Link
+                  href="/vips-dashboard?role=admin"
+                  className="text-sm font-medium transition-all duration-300 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg flex items-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <UserCheck className="h-4 w-4 mr-2" />
+                  {language === "ur" ? "ایڈمن" : "Admin"}
+                </Link>
+                <Link
+                  href="/vips-dashboard?role=super_admin"
+                  className="text-sm font-medium transition-all duration-300 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg flex items-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Crown className="h-4 w-4 mr-2" />
+                  {language === "ur" ? "سپر ایڈمن" : "Super Admin"}
+                </Link>
+                <Link
+                  href="/donors-dashboard"
+                  className="text-sm font-medium transition-all duration-300 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg flex items-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Heart className="h-4 w-4 mr-2" />
+                  {t("donorsDashboard")}
+                </Link>
+              </div>
+              
               <Link
                 href="/user-dashboard"
                 className="text-sm font-medium transition-all duration-300 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg flex items-center"

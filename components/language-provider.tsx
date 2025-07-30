@@ -149,6 +149,25 @@ const translations = {
     monthlyApplicationsTrend: "Monthly Applications Trend", // New
     advancedAnalyticsChart: "Advanced Analytics Chart will be displayed here", // New
     successRateByProgram: "Success Rate by Program", // New
+    donorsManagement: "Donors Management", // New
+    newDonor: "New Donor", // New
+    addNewDonor: "Add New Donor", // New
+    enterDonorInformation: "Enter donor information", // New
+    donorName: "Donor name", // New
+    emailAddress: "Email address", // New
+    phoneNumber: "Phone number", // New
+    city: "City", // New
+    add: "Add", // New
+    cancel: "Cancel", // New
+    edit: "Edit", // New
+    delete: "Delete", // New
+    role: "Role", // New
+    superAdmin: "Super Admin", // New
+    admin: "Admin", // New
+    superAdminFullAccess: "Super Admin - Full Access", // New
+    adminLimitedAccess: "Admin - Limited Access", // New
+    canApproveRejectAllRequests: "Can approve/reject all requests, create and manage donors", // New
+    canViewRequestsApproveButCannotReject: "Can view requests, approve but cannot reject", // New
 
     // Donors Dashboard
     donorsPanel: "Donors Panel", // New
@@ -539,6 +558,25 @@ const translations = {
     monthlyApplicationsTrend: "ماہانہ درخواستوں کا رجحان", // New
     advancedAnalyticsChart: "ایڈوانسڈ تجزیاتی چارٹ یہاں دکھایا جائے گا", // New
     successRateByProgram: "پروگرام کے لحاظ سے کامیابی کی شرح", // New
+    donorsManagement: "ڈونرز کا انتظام", // New
+    newDonor: "نیا ڈونر", // New
+    addNewDonor: "نیا ڈونر شامل کریں", // New
+    enterDonorInformation: "ڈونر کی معلومات درج کریں", // New
+    donorName: "ڈونر کا نام", // New
+    emailAddress: "ای میل ایڈریس", // New
+    phoneNumber: "فون نمبر", // New
+    city: "شہر", // New
+    add: "شامل کریں", // New
+    cancel: "منسوخ کریں", // New
+    edit: "ترمیم", // New
+    delete: "حذف", // New
+    role: "رول", // New
+    superAdmin: "سپر ایڈمن", // New
+    admin: "ایڈمن", // New
+    superAdminFullAccess: "سپر ایڈمن - مکمل اختیارات", // New
+    adminLimitedAccess: "ایڈمن - محدود اختیارات", // New
+    canApproveRejectAllRequests: "تمام درخواستوں کو منظور/مسترد کر سکتے ہیں، ڈونرز بنانے اور انتظام کر سکتے ہیں", // New
+    canViewRequestsApproveButCannotReject: "صرف درخواستوں کو دیکھ سکتے ہیں، منظور کر سکتے ہیں لیکن مسترد نہیں کر سکتے", // New
 
     // Donors Dashboard
     donorsPanel: "ڈونرز پینل", // New
