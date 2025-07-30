@@ -128,9 +128,24 @@ export default function HomePage() {
             <div className="space-y-8 animate-in fade-in slide-in-from-left-6 duration-1000 ml-10 mb-10">
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray">
-                  {language === "ur"
-                    ? "پاکستان کی بہتری کے لیے ہماری خدمات"
-                    : "Empowering Lives Through Service"}
+                  {language === "ur" ? (
+                    <span className="word-animation">
+                      <span className="word">پاکستان</span>{" "}
+                      <span className="word">کی</span>{" "}
+                      <span className="word">بہتری</span>{" "}
+                      <span className="word">کے</span>{" "}
+                      <span className="word">لیے</span>{" "}
+                      <span className="word">ہماری</span>{" "}
+                      <span className="word">خدمات</span>
+                    </span>
+                  ) : (
+                    <span className="word-animation">
+                      <span className="word text-darkblue">Empowering</span>{" "}
+                      <span className="word text-lightblue">Lives</span>{" "}
+                      <span className="word text-darkblue">Through</span>{" "}
+                      <span className="word text-lightblue">Service</span>
+                    </span>
+                  )}
                 </h1>
                 <p className="text-xl text-gray leading-relaxed">
                   {language === "ur"
@@ -149,7 +164,7 @@ export default function HomePage() {
                   </Link>
                   <Link href="/apply">
                     <Button size="lg" 
-                      className="border-2 border-[#8DC63F] text-[#8DC63F] bg-white hover:bg-[#8DC63F] hover:text-white px-8 py-6 text-lg font-semibold min-w-[200px] shadow-lg hover:shadow-xl transition-all duration-300">
+                      className="border-2 text-lightblue border-lightblue text-lightblue bg-white hover:bg-blue-200 hover:text-white px-8 py-6 text-lg font-semibold min-w-[200px] shadow-lg hover:shadow-xl transition-all duration-300">
                       {language === "ur" ? "مدد حاصل کریں" : "Get Help"}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
@@ -175,11 +190,15 @@ export default function HomePage() {
                 <span className="block rounded-full bg-[#0D6DB7]/10 w-20 h-20 animate-circle-move6 absolute bottom-5 left-16"></span>
                 {/* Bottom right */}
                 <span className="block rounded-full bg-[#8DC63F]/10 w-24 h-24 animate-circle-move7 absolute bottom-2 right-2"></span>
+                {/* Additional floating circles */}
+                <span className="block rounded-full bg-[#0D6DB7]/15 w-14 h-14 animate-circle-float absolute top-1/4 left-1/4"></span>
+                <span className="block rounded-full bg-[#8DC63F]/15 w-18 h-18 animate-circle-float2 absolute top-3/4 right-1/4"></span>
+                <span className="block rounded-full bg-[#0D6DB7]/10 w-10 h-10 animate-circle-float3 absolute top-1/2 left-1/2"></span>
               </div>
               {/* Multiple Hero Images in Circles */}
               <div className="relative z-10 w-[400px] h-[400px] md:w-[480px] md:h-[480px]">
                 {/* Large bottom left image */}
-                <div className="hero-circle-lift group absolute left-0 bottom-15 w-72 h-72 rounded-full bg-gradient-to-br from-white via-[#eaf6fb] to-[#eafbe7] shadow-2xl border-4 border-[#0D6DB7] flex items-center justify-center animate-float" style={{marginLeft: '-32px', marginBottom: '-32px'}}>
+                <div className="hero-circle-lift group absolute left-0 bottom-15 w-72 h-72 rounded-full bg-white border-2 border-darkblue flex items-center justify-center animate-float cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 hover:scale-102 hover:shadow-2xl" style={{marginLeft: '-32px', marginBottom: '-32px'}}>
                   <Image
                     src="/hero-back.png"
                     alt="Hero Main"
@@ -189,9 +208,9 @@ export default function HomePage() {
                   />
                 </div>
                 {/* Top left image */}
-                <div className="hero-circle-lift group absolute left-[85px] top-[2px] w-36 h-36 rounded-full bg-gradient-to-br from-white via-[#eafbe7] to-[#eaf6fb] shadow-xl border-4 border-[#8DC63F] flex items-center justify-center animate-float delay-200">
+                <div className="hero-circle-lift group absolute left-[85px] top-[2px] w-36 h-36 rounded-full bg-white border-2 border-lightblue flex items-center justify-center animate-float delay-200 cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-1 hover:scale-105 hover:shadow-lg">
                   <Image
-                    src="/placeholder-user.jpg"
+                    src="/hero-back.png"
                     alt="Hero 2"
                     fill
                     sizes="(max-width: 480px) 100vw, 140px"
@@ -199,9 +218,9 @@ export default function HomePage() {
                   />
                 </div>
                 {/* Top right image */}
-                <div className="hero-circle-lift group absolute right-[10px] top-[40px] w-55 h-55 rounded-full bg-gradient-to-br from-white via-[#eafbe7] to-[#eaf6fb] shadow-xl border-4 border-[#0D6DB7] flex items-center justify-center animate-float delay-400">
+                <div className="hero-circle-lift group absolute right-[10px] top-[40px] w-55 h-55 rounded-full bg-white border-2 border-darkblue shadow-xl flex items-center justify-center animate-float delay-400 cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-1 hover:scale-105 hover:shadow-lg">
                   <Image
-                    src="/placeholder-logo.png"
+                    src="/hero-back.png"
                     alt="Hero 3"
                     fill
                     sizes="(max-width: 480px) 100vw, 160px"
@@ -209,9 +228,9 @@ export default function HomePage() {
                   />
                 </div>
                 {/* Bottom right small image */}
-                <div className="hero-circle-lift group absolute right-[60px] bottom-[50px] w-36 h-36 rounded-full bg-gradient-to-br from-white via-[#eafbe7] to-[#eaf6fb] shadow-lg border-4 border-[#8DC63F] flex items-center justify-center animate-float delay-600">
+                <div className="hero-circle-lift group absolute right-[60px] bottom-[50px] w-36 h-36 rounded-full bg-white border-2 border-lightblue flex items-center justify-center animate-float delay-600 cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-1 hover:scale-105 hover:shadow-md">
                   <Image
-                    src="/placeholder.jpg"
+                    src="/hero-back.png"
                     alt="Hero 4"
                     fill
                     sizes="(max-width: 480px) 100vw, 100px"
@@ -223,123 +242,136 @@ export default function HomePage() {
         {/* Animated circle keyframes for hero section - moved outside image container */}
         <style jsx>{`
           @keyframes circleMove {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.08); }
-            100% { transform: translateY(0) scale(1); }
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-20px) scale(1.08); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.7; }
           }
           .animate-circle-move {
             animation: circleMove 4s ease-in-out infinite;
           }
           @keyframes circleMove2 {
-            0% { transform: translateX(0) scale(1); }
-            50% { transform: translateX(20px) scale(1.08); }
-            100% { transform: translateX(0) scale(1); }
+            0% { transform: translateX(0) scale(1); opacity: 0.6; }
+            50% { transform: translateX(20px) scale(1.08); opacity: 1; }
+            100% { transform: translateX(0) scale(1); opacity: 0.6; }
           }
           .animate-circle-move2 {
             animation: circleMove2 5s ease-in-out infinite;
           }
           @keyframes circleMove3 {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(15px) scale(1.05); }
-            100% { transform: translateY(0) scale(1); }
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(15px) scale(1.05); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.8; }
           }
           .animate-circle-move3 {
             animation: circleMove3 6s ease-in-out infinite;
           }
           @keyframes circleMove4 {
-            0% { transform: translateX(0) scale(1); }
-            50% { transform: translateX(-15px) scale(1.05); }
-            100% { transform: translateX(0) scale(1); }
+            0% { transform: translateX(0) scale(1); opacity: 0.5; }
+            50% { transform: translateX(-15px) scale(1.05); opacity: 1; }
+            100% { transform: translateX(0) scale(1); opacity: 0.5; }
           }
           .animate-circle-move4 {
             animation: circleMove4 7s ease-in-out infinite;
           }
           @keyframes circleMove5 {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.03); }
-            100% { transform: translateY(0) scale(1); }
+            0% { transform: translateY(0) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-10px) scale(1.03); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.6; }
           }
           .animate-circle-move5 {
             animation: circleMove5 4.5s ease-in-out infinite;
           }
           @keyframes circleMove6 {
-            0% { transform: translateX(0) scale(1); }
-            50% { transform: translateX(10px) scale(1.03); }
-            100% { transform: translateX(0) scale(1); }
+            0% { transform: translateX(0) scale(1); opacity: 0.7; }
+            50% { transform: translateX(10px) scale(1.03); opacity: 1; }
+            100% { transform: translateX(0) scale(1); opacity: 0.7; }
           }
           .animate-circle-move6 {
             animation: circleMove6 5.5s ease-in-out infinite;
           }
           @keyframes circleMove7 {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(10px) scale(1.03); }
-            100% { transform: translateY(0) scale(1); }
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(10px) scale(1.03); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.8; }
           }
           .animate-circle-move7 {
             animation: circleMove7 6.5s ease-in-out infinite;
           }
+          
+          /* New floating animations */
+          @keyframes circleFloat {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-15px) translateX(10px) scale(1.1); opacity: 1; }
+            50% { transform: translateY(-25px) translateX(-5px) scale(1.05); opacity: 0.8; }
+            75% { transform: translateY(-10px) translateX(-15px) scale(1.15); opacity: 1; }
+            100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+          }
+          .animate-circle-float {
+            animation: circleFloat 8s ease-in-out infinite;
+          }
+          
+          @keyframes circleFloat2 {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
+            33% { transform: translateY(-20px) translateX(15px) scale(1.12); opacity: 1; }
+            66% { transform: translateY(-30px) translateX(-10px) scale(1.08); opacity: 0.7; }
+            100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
+          }
+          .animate-circle-float2 {
+            animation: circleFloat2 10s ease-in-out infinite;
+          }
+          
+          @keyframes circleFloat3 {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-12px) translateX(8px) scale(1.06); opacity: 1; }
+            100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+          }
+          .animate-circle-float3 {
+            animation: circleFloat3 6s ease-in-out infinite;
+          }
+          
+          /* Custom shadow classes for hover effects */
+          .hover\\:shadow-3xl:hover {
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+          }
+          .hover\\:shadow-2xl:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          }
+          .hover\\:shadow-xl:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          }
+          .hover\\:scale-102:hover {
+            transform: scale(1.02);
+          }
+          
+          /* Word by word animation */
+          .word-animation .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: wordFadeIn 0.8s ease-out forwards;
+          }
+          
+          .word-animation .word:nth-child(1) { animation-delay: 0.1s; }
+          .word-animation .word:nth-child(3) { animation-delay: 0.2s; }
+          .word-animation .word:nth-child(5) { animation-delay: 0.3s; }
+          .word-animation .word:nth-child(7) { animation-delay: 0.4s; }
+          .word-animation .word:nth-child(9) { animation-delay: 0.5s; }
+          .word-animation .word:nth-child(11) { animation-delay: 0.6s; }
+          .word-animation .word:nth-child(13) { animation-delay: 0.7s; }
+          
+          @keyframes wordFadeIn {
+            0% {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
         `}</style>
           </div>
         </div>
-      </section>
-
-      {/* News & Events / Marquee Section */}
-      <section className="py-4 bg-[#8DC63F] text-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center overflow-hidden">
-            <div className="flex-shrink-0 bg-[#0D6DB7] px-6 py-4 rounded-lg shadow-lg">
-              <span className="font-bold text-lg tracking-wide">{t("latestNews")}</span>
-            </div>
-            <div className="marquee-wrapper overflow-hidden whitespace-nowrap relative flex-1 ml-4 rounded-lg shadow-lg border border-[#0D6DB7] bg-white">
-              <div className="marquee-content flex items-center h-12" style={{display: 'inline-flex'}}>
-                {latestNews.map((news, index) => (
-                  <Link
-                    key={news.id}
-                    href={news.link}
-                    className="inline-block mx-8 px-4 py-2 rounded-lg bg-[#eaf6fb] text-[#0D6DB7] font-medium hover:bg-[#0D6DB7] hover:text-white transition-colors duration-300 shadow"
-                  >
-                    <span>{news.title}</span>
-                  </Link>
-                ))}
-                {latestNews.map((news, index) => (
-                  <Link
-                    key={`dup-${news.id}`}
-                    href={news.link}
-                    className="inline-block mx-8 px-4 py-2 rounded-lg bg-[#eaf6fb] text-[#0D6DB7] font-medium hover:bg-[#0D6DB7] hover:text-white transition-colors duration-300 shadow"
-                  >
-                    <span>{news.title}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <style jsx>{`
-          .marquee-wrapper {
-            position: relative;
-            width: 100%;
-            height: 56px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(13,109,183,0.08);
-            border: 1px solid #0D6DB7;
-          }
-          .marquee-content {
-            position: absolute;
-            left: 0;
-            top: 0;
-            white-space: nowrap;
-            animation: marqueeMove 18s linear infinite;
-            will-change: transform;
-          }
-          .marquee-wrapper:hover .marquee-content {
-            animation-play-state: paused;
-          }
-          @keyframes marqueeMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
       </section>
 
       {/* About Us / Mission Section */}

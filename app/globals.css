@@ -4,6 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Custom color palette */
+  --darkblue: #03045e;
+  --lightblue: #00bfe6;
+  --gray: #36454f;
+  --webblack: #00171f;
+  --bglightblue: #e6faff;
+  
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -186,3 +193,22 @@
     transform: translateX(-100%);
   }
 }
+
+/* Custom utility classes for your color palette */
+.bg-darkblue { background-color: var(--darkblue); }
+.bg-lightblue { background-color: var(--lightblue); }
+.bg-gray { background-color: var(--gray); }
+.bg-webblack { background-color: var(--webblack); }
+.bg-bglightblue { background-color: var(--bglightblue); }
+
+.text-darkblue { color: var(--darkblue); }
+.text-lightblue { color: var(--lightblue); }
+.text-gray { color: var(--gray); }
+.text-webblack { color: var(--webblack); }
+.text-bglightblue { color: var(--bglightblue); }
+
+.border-darkblue { border-color: var(--darkblue); }
+.border-lightblue { border-color: var(--lightblue); }
+.border-gray { border-color: var(--gray); }
+.border-webblack { border-color: var(--webblack); }
+.border-bglightblue { border-color: var(--bglightblue); }
