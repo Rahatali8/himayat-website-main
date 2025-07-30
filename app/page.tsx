@@ -1,10 +1,11 @@
 "use client"
-import { ArrowRight, Heart, CheckCircle, Lightbulb, Handshake} from "lucide-react"
+import { ArrowRight, GraduationCap,Users,School, Stethoscope,ShieldCheck,LifeBuoy,Home, Heart, CheckCircle, Lightbulb, Handshake } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useLanguage } from "@/components/language-provider"
 import Image from "next/image"
+import RecentNews from "@/components/recent-news"
 
 const testimonials = [
   {
@@ -91,32 +92,6 @@ export default function HomePage() {
     },
   ]
 
-  const latestNews = [
-    {
-      id: 1,
-      title: language === "ur" ? "نئی روزگار سکیم کا آغاز" : "New Employment Scheme Launched",
-      date: "2024-07-25",
-      link: "#",
-    },
-    {
-      id: 2,
-      title: language === "ur" ? "ووکیشنل ٹریننگ کے نئے کورسز" : "New Vocational Training Courses",
-      date: "2024-07-20",
-      link: "#",
-    },
-    {
-      id: 3,
-      title: language === "ur" ? "مائیکرو فنانس قرضوں میں اضافہ" : "Increase in Microfinance Loans",
-      date: "2024-07-15",
-      link: "#",
-    },
-    {
-      id: 4,
-      title: language === "ur" ? "رمضان راشن تقسیم مہم" : "Ramadan Ration Distribution Drive",
-      date: "2024-07-10",
-      link: "#",
-    },
-  ]
 
   return (
     <div className="min-h-screen overflow-hidden">
@@ -147,14 +122,16 @@ export default function HomePage() {
                     </span>
                   )}
                 </h1>
-                <p className="text-xl text-gray leading-relaxed">
-                  {language === "ur"
-                    ? "غریبوں کی مدد، تعلیم، صحت اور روزگار کے شعبوں میں خدمات"
-                    : "Dedicated to providing education, healthcare, and sustainable livelihood opportunities to those in need."}
-                </p>
+                <div className="typing-animation-container">
+                  <p className="text-xl text-gray leading-relaxed typing-text">
+                    {language === "ur"
+                      ? "غریبوں کی مدد، تعلیم اور صحت کے شعبوں میں خدمات"
+                      : "Dedicated to providing education and healthcare services."}
+                  </p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/donate">
-                    <Button size="lg" 
+                    <Button size="lg"
                       className="bg-[#0D6DB7] text-white hover:bg-[#0D6DB7]/90 
                         px-8 py-6 text-lg font-semibold min-w-[200px]
                         shadow-lg hover:shadow-xl transition-all duration-300">
@@ -163,7 +140,7 @@ export default function HomePage() {
                     </Button>
                   </Link>
                   <Link href="/apply">
-                    <Button size="lg" 
+                    <Button size="lg"
                       className="border-2 text-lightblue border-lightblue text-lightblue bg-white hover:bg-blue-200 hover:text-white px-8 py-6 text-lg font-semibold min-w-[200px] shadow-lg hover:shadow-xl transition-all duration-300">
                       {language === "ur" ? "مدد حاصل کریں" : "Get Help"}
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -198,7 +175,7 @@ export default function HomePage() {
               {/* Multiple Hero Images in Circles */}
               <div className="relative z-10 w-[400px] h-[400px] md:w-[480px] md:h-[480px]">
                 {/* Large bottom left image */}
-                <div className="hero-circle-lift group absolute left-0 bottom-15 w-72 h-72 rounded-full bg-white border-2 border-darkblue flex items-center justify-center animate-float cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 hover:scale-102 hover:shadow-2xl" style={{marginLeft: '-32px', marginBottom: '-32px'}}>
+                <div className="hero-circle-lift group absolute left-0 bottom-15 w-72 h-72 rounded-full bg-white border-2 border-darkblue flex items-center justify-center animate-float cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 hover:scale-102 hover:shadow-2xl" style={{ marginLeft: '-32px', marginBottom: '-32px' }}>
                   <Image
                     src="/hero-back.png"
                     alt="Hero Main"
@@ -239,8 +216,8 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-        {/* Animated circle keyframes for hero section - moved outside image container */}
-        <style jsx>{`
+            {/* Animated circle keyframes for hero section - moved outside image container */}
+            <style jsx>{`
           @keyframes circleMove {
             0% { transform: translateY(0) scale(1); opacity: 0.7; }
             50% { transform: translateY(-20px) scale(1.08); opacity: 1; }
@@ -369,128 +346,196 @@ export default function HomePage() {
               transform: translateY(0);
             }
           }
+          
+          /* Typing animation */
+          .typing-animation-container {
+            width: 100%;
+            overflow: hidden;
+          }
+          
+          .typing-text {
+            overflow: hidden;
+            border-right: 2px solid #0D6DB7;
+            white-space: nowrap;
+            display: inline-block;
+            width: 0;
+            animation: typing 4s steps(50) infinite alternate-reverse;
+          }
+          
+          @keyframes typing {
+            0% {
+              width: 0;
+            }
+            100% {
+              width: 100%;
+            }
+          }
         `}</style>
           </div>
         </div>
       </section>
 
-      {/* About Us / Mission Section */}
-      <section className="py-16 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray">
-              {t("missionTitle")}
-            </h2>
-            <p className="text-lg text-gray leading-relaxed">{t("missionText")}</p>
-          </div>
-          {/* About Us Feature Cards */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <Card className="bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 animate-in fade-in slide-in-from-bottom-4">
-              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-                <img src="/placeholder-user.jpg" alt="Founder" className="h-16 w-16 rounded-full object-cover border-4 border-[#00b8e6] mb-2" />
-                <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "بانی" : "Founder"}</h3>
-                <p className="text-slate-600 text-sm">{language === "ur" ? "ہمارے بانی نے معاشرتی بہتری کے لیے بنیاد رکھی" : "Our founder laid the foundation for social betterment."}</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 animate-in fade-in slide-in-from-bottom-4 delay-100">
-              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-                <img src="/placeholder-logo.png" alt="Vision" className="h-16 w-16 rounded-full object-cover border-4 border-[#00b8e6] mb-2" />
-                <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "ہمارا وژن" : "Our Vision"}</h3>
-                <p className="text-slate-600 text-sm">{language === "ur" ? "ایک خوددار اور خوشحال پاکستان کا خواب" : "A vision for a self-reliant and prosperous Pakistan."}</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 animate-in fade-in slide-in-from-bottom-4 delay-200">
-              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-                <img src="/placeholder.jpg" alt="Team" className="h-16 w-16 rounded-full object-cover border-4 border-[#00b8e6] mb-2" />
-                <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "ہماری ٹیم" : "Our Team"}</h3>
-                <p className="text-slate-600 text-sm">{language === "ur" ? "پیشہ ور اور پرعزم افراد کی ٹیم" : "A team of dedicated and professional individuals."}</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 animate-in fade-in slide-in-from-bottom-4 delay-300">
-              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-                <img src="/placeholder-logo.svg" alt="Impact" className="h-16 w-16 rounded-full object-cover border-4 border-[#00b8e6] mb-2" />
-                <h3 className="text-xl font-bold text-slate-900">{language === "ur" ? "ہمارا اثر" : "Our Impact"}</h3>
-                <p className="text-slate-600 text-sm">{language === "ur" ? "ہزاروں مستفید افراد اور مثبت تبدیلیاں" : "Thousands of beneficiaries and positive change."}</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <section className="py-20 bg-blue-50">
+  <div className="container mx-auto px-6 text-center">
+    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-12">
+      {language === "ur" ? "اعداد و شمار" : "Key Statistics"}
+    </h2>
 
-      {/* Our Vision Section - New Section */}
-      <section className="py-16 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-1000">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                {language === "ur" ? "ہمارا وژن" : "Our Vision"}
-              </h2>
-              <p className="text-lg text-slate-700 leading-relaxed">
-                {language === "ur"
-                  ? "ہم ایک ایسے معاشرے کی تشکیل کے لیے پرعزم ہیں جہاں ہر فرد کو ترقی کے مساوی مواقع میسر ہوں۔ ہمارا مقصد پائیدار ترقی اور خود انحصاری کو فروغ دینا ہے۔"
-                  : "We are committed to building a society where every individual has equal opportunities for growth. Our aim is to foster sustainable development and self-reliance."}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/about">
-                  <Button
-                    size="lg"
-                    className="bg-[#00a3cc] text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-                  >
-                    {t("learnMoreAboutUs")}
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-in fade-in slide-in-from-right-4 duration-1000 delay-200">
-              <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 space-y-4 text-center">
-                  <CheckCircle className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "شفافیت" : "Transparency"}</h3>
-                  <p className="text-gray text-sm">
-                    {language === "ur"
-                      ? "ہر قدم پر مکمل شفافیت کو یقینی بنانا"
-                      : "Ensuring complete transparency at every step."}
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 space-y-4 text-center">
-                  <Lightbulb className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "جدت" : "Innovation"}</h3>
-                  <p className="text-gray text-sm">
-                    {language === "ur" ? "نئے اور مؤثر حل تلاش کرنا" : "Seeking new and effective solutions."}
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 space-y-4 text-center">
-                  <Handshake className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "تعاون" : "Collaboration"}</h3>
-                  <p className="text-gray text-sm">
-                    {language === "ur" ? "مضبوط شراکت داری کے ذریعے کام کرنا" : "Working through strong partnerships."}
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 space-y-4 text-center">
-                  <Heart className="h-12 w-12 text-[#00a3cc] mx-auto" />
-                  <h3 className="text-xl font-bold text-gray">{language === "ur" ? "ہمدردی" : "Compassion"}</h3>
-                  <p className="text-gray text-sm">
-                    {language === "ur" ? "ضرورت مندوں کے لیے گہری ہمدردی" : "Deep empathy for those in need."}
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Card 1: Beneficiaries */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <Users className="text-[#00b8e6] w-10 h-10 mb-3" />
+        <h3 className="text-3xl font-bold text-gray-800">50,000+</h3>
+        <p className="text-gray-600 mt-2 text-center">
+          {language === "ur" ? "مستفید افراد" : "Beneficiaries Helped"}
+        </p>
+      </div>
+
+      {/* Card 2: Schools */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <School className="text-[#00b8e6] w-10 h-10 mb-3" />
+        <h3 className="text-3xl font-bold text-gray-800">12</h3>
+        <p className="text-gray-600 mt-2 text-center">
+          {language === "ur" ? "اسکولز قائم کیے گئے" : "Schools Established"}
+        </p>
+      </div>
+
+      {/* Card 3: Medical Camps */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <Stethoscope className="text-[#00b8e6] w-10 h-10 mb-3" />
+        <h3 className="text-3xl font-bold text-gray-800">75+</h3>
+        <p className="text-gray-600 mt-2 text-center">
+          {language === "ur" ? "طبی کیمپس" : "Medical Camps Held"}
+        </p>
+      </div>
+
+      {/* Card 4: Emergency Aid */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <ShieldCheck className="text-[#00b8e6] w-10 h-10 mb-3" />
+        <h3 className="text-3xl font-bold text-gray-800">30+</h3>
+        <p className="text-gray-600 mt-2 text-center">
+          {language === "ur" ? "ایمرجنسی ریلیف" : "Emergency Relief Ops"}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+      <section className="py-20 bg-gradient-to-b from-white via-blue-50 to-white">
+  <div className="container mx-auto px-8 flex flex-col lg:flex-row items-center gap-12">
+    
+    {/* Left Side: 6 Images (3 Mission + 3 Vision) */}
+    <div className="lg:w-1/2 grid grid-cols-2 gap-4 animate-in fade-in slide-in-from-left-4 duration-1000">
+      {/* Mission Images */}
+      <img src="/mission-1.jpg" alt="Mission 1" className="w-full h-44 object-cover rounded-xl shadow-md" />
+      <img src="/mission-2.jpg" alt="Mission 2" className="w-full h-44 object-cover rounded-xl shadow-md" />
+      <img src="/mission-3.jpg" alt="Mission 3" className="w-full h-44 object-cover rounded-xl shadow-md" />
+      
+      {/* Vision Images */}
+      <img src="/vision-1.jpg" alt="Vision 1" className="w-full h-44 object-cover rounded-xl shadow-md" />
+      <img src="/vision-2.jpg" alt="Vision 2" className="w-full h-44 object-cover rounded-xl shadow-md" />
+      <img src="/vision-3.jpg" alt="Vision 3" className="w-full h-44 object-cover rounded-xl shadow-md" />
+    </div>
+
+    {/* Right Side: Mission and Vision Text */}
+    <div className={`lg:w-1/2 animate-in fade-in slide-in-from-right-4 duration-1000 ${language === "ur" ? "text-right" : "text-left"}`}>
+      
+      {/* Mission */}
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">{language === "ur" ? "ہمارا مشن" : "Our Mission"}</h2>
+      <p className="text-lg text-gray-700 leading-relaxed mb-2">
+        {language === "ur"
+          ? "ہم ایک ایسے معاشرے کے لیے کوشاں ہیں جہاں ہر فرد کو معیاری تعلیم، صحت کی سہولیات اور بنیادی ضروریات حاصل ہوں۔"
+          : "We strive for a society where every individual has access to quality education, healthcare, and basic necessities."}
+      </p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-2">
+        {language === "ur"
+          ? "ہم محروم طبقات کو بااختیار بنانا چاہتے ہیں تاکہ وہ باعزت زندگی گزار سکیں۔"
+          : "We aim to empower the underprivileged so they can live with dignity and self-respect."}
+      </p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+        {language === "ur"
+          ? "ہماری کاوشیں دیرپا تبدیلی اور معاشرتی بہتری کے لیے وقف ہیں۔"
+          : "Our efforts are focused on creating lasting change and community development."}
+      </p>
+
+      {/* Mission Icons */}
+      <div className="flex flex-wrap gap-5 mb-10 mt-3">
+        <div className="flex items-center gap-3">
+          <Heart className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "فلاحی خدمات" : "Welfare Services"}</span>
         </div>
-      </section>
+        <div className="flex items-center gap-3">
+          <GraduationCap className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "تعلیم" : "Education"}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Stethoscope className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "صحت" : "Healthcare"}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Home className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "رہائش" : "Shelter"}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <LifeBuoy className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "ایمرجنسی امداد" : "Emergency Help"}</span>
+        </div>
+      </div>
+
+      {/* Vision */}
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">{language === "ur" ? "ہمارا وژن" : "Our Vision"}</h2>
+      <p className="text-lg text-gray-700 leading-relaxed mb-2">
+        {language === "ur"
+          ? "ہم ایک ایسے معاشرے کی تشکیل چاہتے ہیں جہاں ہر شخص ترقی کے مساوی مواقع حاصل کرے۔"
+          : "We envision a society where everyone has equal opportunities to grow and thrive."}
+      </p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-2">
+        {language === "ur"
+          ? "ہمارا مقصد پائیدار ترقی اور خود انحصاری کو فروغ دینا ہے۔"
+          : "Our goal is to promote sustainability and self-reliance."}
+      </p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+        {language === "ur"
+          ? "ہم جدت، شفافیت اور اجتماعی تعاون کے اصولوں پر عمل کرتے ہوئے معاشرتی بہتری کے لیے کوشاں ہیں۔"
+          : "We believe in innovation, transparency, and collective collaboration for social betterment."}
+      </p>
+
+      {/* Vision Icons */}
+      <div className="flex flex-wrap gap-5 mt-3">
+        <div className="flex items-center gap-3">
+          <CheckCircle className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "شفافیت" : "Transparency"}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Lightbulb className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "جدت" : "Innovation"}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Handshake className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "تعاون" : "Collaboration"}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Heart className="text-[#00b8e6]" />
+          <span className="text-gray-800 text-base">{language === "ur" ? "ہمدردی" : "Compassion"}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+      <RecentNews />
 
       {/* What We Do Section - Saylani Style */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray mb-4">
               {language === "ur" ? "ہم کیا کرتے ہیں" : "What We Do"}
             </h2>
             <div className="w-24 h-1 bg-[#8DC63F] mx-auto"></div>
@@ -504,9 +549,8 @@ export default function HomePage() {
                     <Image
                       src={program.image || "/placeholder.svg"}
                       alt={program.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-500 hover:scale-110"
+                      fill
+                      className="transition-transform duration-500 hover:scale-110 object-cover"
                     />
                   </div>
                   <div className="p-4">
@@ -524,7 +568,7 @@ export default function HomePage() {
       <section className="py-16 bg-[#0D6DB7]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray mb-4">
               {language === "ur" ? "ہماری کارکردگی" : "Our Impact"}
             </h2>
             <div className="w-24 h-1 bg-[#8DC63F] mx-auto"></div>
@@ -553,7 +597,7 @@ export default function HomePage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center space-y-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray">
               {t("successStories")}
             </h2>
             <p className="text-lg text-gray">
@@ -585,8 +629,8 @@ export default function HomePage() {
                       />
                     </div>
                     <div>
-                    <div className="font-semibold text-gray">{testimonial.name}</div>
-                    <div className="text-sm text-gray">{testimonial.location}</div>
+                      <div className="font-semibold text-gray">{testimonial.name}</div>
+                      <div className="text-sm text-gray">{testimonial.location}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -596,11 +640,13 @@ export default function HomePage() {
         </div>
       </section>
 
+
+
       {/* CTA Section */}
       <section className="py-16 bg-[#0D6DB7] text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray mb-6">{t("joinUsToday")}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray mb-6">{t("joinUsToday")}</h2>
             <p className="text-lg text-gray mb-8">
               {language === "ur"
                 ? "ہمارے ساتھ مل کر پاکستان کو خوددار بنانے میں اپنا کردار ادا کریں"

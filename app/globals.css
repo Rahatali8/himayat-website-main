@@ -212,3 +212,15 @@
 .border-gray { border-color: var(--gray); }
 .border-webblack { border-color: var(--webblack); }
 .border-bglightblue { border-color: var(--bglightblue); }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-blur {
+  filter: blur(3px); /* You can try 1px for even lighter */
+}
